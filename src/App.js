@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import "./App.css";
 import Axios from "axios";
 import stock from "./stock.mp4";
@@ -16,19 +16,30 @@ function App() {
     Axios.get(
       `https://finfo-api.vndirect.com.vn/v4/stock_prices?sort=date&size=1&q=code:${name}`
     ).then((res) => {
-      console.log(res.data);
-      setStockInfo(res.data);
+      console.log(res.data.data);
+      setStockInfo(res.data.data);
     });
   };
 
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
   return (
-    <div className="App" style={{backgroundImage: "url(/fstock.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+    <div
+      className="App"
+      style={{
+        backgroundImage: "url(/fstock.jpg)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
       {/* <Container>
         <video className="videoTag" autoPlay loop muted>
           <source src={stock} type="video/mp4" />
         </video>
       </Container> */}
-      <ConfettiComponent/>
+      <ConfettiComponent />
       <Heading>Thông tin tỉ giá chứng khoán</Heading>
       <Content>
         <h3 id="h3-tag">
@@ -90,6 +101,7 @@ function App() {
         </a>
       </div>
       <h3>{JSON.stringify(stockInfo, null, "\t")}</h3>
+      {/* <h3>Xuat ra{stockInfo?.date}</h3> */}
 
       <Container>
         <video className="videoTag" autoPlay loop muted>
