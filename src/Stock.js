@@ -10,17 +10,17 @@ const Stock = ({ code, time, date, basicPrice, open, close }) => {
           <p className="w-20 ml-4 flex justify-start uppercase">{time}</p>
         </div>
         <div className="coin-data flex items-center">
-          <p className="coin-price w-32 flex justify-start">Basic Price: {basicPrice}</p>
-          <p className="coin-volume w-32 flex justify-start">
+          <p className="coin-price w-32 ml-10 flex justify-start">Basic Price: {basicPrice}</p>
+          <p className="coin-volume w-32 ml-10 flex justify-start">
             Open: {open.toLocaleString()}
           </p>
           {close < 0 ? (
-            <p className="coin-percent text-red-500 w-40 ml-4 flex justify-end">
-              {close.toFixed(2)}%
+            <p className="coin-percent text-red-500 w-40 ml-5 flex justify-end">
+              {close.toFixed(2)}
             </p>
           ) : (
-            <p className="coin-percent text-green-500 w-40 ml-4 flex justify-end">
-              Close Price: {close.toFixed(2)}%
+            <p className="coin-percent text-green-500 w-40 ml-5 flex justify-end">
+              Close Price: {close.toFixed(2)}
             </p>
           )}
         </div>
